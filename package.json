@@ -18,10 +18,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trik/capacitor-zeroconf.git"
+    "url": "git+https://github.com/byrdsandbytes/capacitor-zeroconf.git"
   },
   "bugs": {
-    "url": "https://github.com/trik/capacitor-zeroconf/issues"
+    "url": "https://github.com/byrdsandbytes/capacitor-zeroconf/issues"
   },
   "keywords": [
     "capacitor",
@@ -45,7 +45,7 @@
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\" --plugin=prettier-plugin-java",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api ZeroConfPlugin --output-readme README.md --output-json dist/docs.json",
-    "build": "yarn clean && yarn docgen && tsc && rollup -c rollup.config.mjs && yarn build-electron",
+    "build": "yarn clean && tsc && rollup -c rollup.config.mjs && yarn build-electron",
     "build-electron": "tsc --project electron/tsconfig.json && rollup -c electron/rollup.config.mjs && rimraf ./electron/build",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
