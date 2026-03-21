@@ -1,0 +1,462 @@
+{
+  "api": {
+    "name": "ZeroConfPlugin",
+    "slug": "zeroconfplugin",
+    "docs": "ZeroConf/Bonjour/mDNS service discovery and publishing plugin",
+    "tags": [],
+    "methods": [
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'discover', listenerFunc: (result: ZeroConfWatchResult) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "- Must be 'discover'",
+            "type": "'discover'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "- Callback function for discovery events",
+            "type": "(result: ZeroConfWatchResult) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "eventName - Must be 'discover'"
+          },
+          {
+            "name": "param",
+            "text": "listenerFunc - Callback function for discovery events"
+          },
+          {
+            "name": "returns",
+            "text": "Promise that resolves to a listener handle"
+          }
+        ],
+        "docs": "Listen for service discovery events",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "ZeroConfWatchResult"
+        ],
+        "slug": "addlistenerdiscover-"
+      },
+      {
+        "name": "getHostname",
+        "signature": "() => Promise<{ hostname: string; }>",
+        "parameters": [],
+        "returns": "Promise<{ hostname: string; }>",
+        "tags": [
+          {
+            "name": "returns",
+            "text": "Promise that resolves to the hostname"
+          }
+        ],
+        "docs": "Get the device hostname",
+        "complexTypes": [],
+        "slug": "gethostname"
+      },
+      {
+        "name": "register",
+        "signature": "(request: ZeroConfRegisterRequest) => Promise<void>",
+        "parameters": [
+          {
+            "name": "request",
+            "docs": "- Service registration details",
+            "type": "ZeroConfRegisterRequest"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "request - Service registration details"
+          },
+          {
+            "name": "returns",
+            "text": "Promise that resolves when service is registered"
+          }
+        ],
+        "docs": "Register/publish a service to make it discoverable",
+        "complexTypes": [
+          "ZeroConfRegisterRequest"
+        ],
+        "slug": "register"
+      },
+      {
+        "name": "unregister",
+        "signature": "(request: ZeroConfUnregisterRequest) => Promise<void>",
+        "parameters": [
+          {
+            "name": "request",
+            "docs": "- Service to unregister",
+            "type": "ZeroConfUnregisterRequest"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "request - Service to unregister"
+          },
+          {
+            "name": "returns",
+            "text": "Promise that resolves when service is unregistered"
+          }
+        ],
+        "docs": "Unregister/unpublish a previously registered service",
+        "complexTypes": [
+          "ZeroConfUnregisterRequest"
+        ],
+        "slug": "unregister"
+      },
+      {
+        "name": "stop",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "returns",
+            "text": "Promise that resolves when stopped"
+          }
+        ],
+        "docs": "Stop all service registration/publishing",
+        "complexTypes": [],
+        "slug": "stop"
+      },
+      {
+        "name": "watch",
+        "signature": "(request: ZeroConfWatchRequest, callback?: ZeroConfWatchCallback | undefined) => Promise<CallbackID>",
+        "parameters": [
+          {
+            "name": "request",
+            "docs": "- What services to watch for",
+            "type": "ZeroConfWatchRequest"
+          },
+          {
+            "name": "callback",
+            "docs": "- Optional callback (deprecated, use addListener instead)",
+            "type": "ZeroConfWatchCallback | undefined"
+          }
+        ],
+        "returns": "Promise<string>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "request - What services to watch for"
+          },
+          {
+            "name": "param",
+            "text": "callback - Optional callback (deprecated, use addListener instead)"
+          },
+          {
+            "name": "returns",
+            "text": "Promise that resolves to a callback ID"
+          }
+        ],
+        "docs": "Start watching for services of a specific type\nUse addListener('discover', ...) to receive the discovered services",
+        "complexTypes": [
+          "ZeroConfWatchRequest",
+          "ZeroConfWatchCallback",
+          "CallbackID"
+        ],
+        "slug": "watch"
+      },
+      {
+        "name": "unwatch",
+        "signature": "(request: ZeroConfUnwatchRequest) => Promise<void>",
+        "parameters": [
+          {
+            "name": "request",
+            "docs": "- What services to stop watching",
+            "type": "ZeroConfWatchRequest"
+          }
+        ],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "param",
+            "text": "request - What services to stop watching"
+          },
+          {
+            "name": "returns",
+            "text": "Promise that resolves when stopped"
+          }
+        ],
+        "docs": "Stop watching for services",
+        "complexTypes": [
+          "ZeroConfUnwatchRequest"
+        ],
+        "slug": "unwatch"
+      },
+      {
+        "name": "close",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [
+          {
+            "name": "returns",
+            "text": "Promise that resolves when closed"
+          }
+        ],
+        "docs": "Close all operations and cleanup resources",
+        "complexTypes": [],
+        "slug": "close"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfWatchResult",
+      "slug": "zeroconfwatchresult",
+      "docs": "Result of a service discovery event",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "action",
+          "tags": [],
+          "docs": "What happened to the service",
+          "complexTypes": [
+            "ZeroConfWatchAction"
+          ],
+          "type": "ZeroConfWatchAction"
+        },
+        {
+          "name": "service",
+          "tags": [],
+          "docs": "The service that was affected",
+          "complexTypes": [
+            "ZeroConfService"
+          ],
+          "type": "ZeroConfService"
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfService",
+      "slug": "zeroconfservice",
+      "docs": "Discovered service information",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "domain",
+          "tags": [],
+          "docs": "Domain of the service",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "type",
+          "tags": [],
+          "docs": "Service type",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "tags": [],
+          "docs": "Service name",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "port",
+          "tags": [],
+          "docs": "Port number",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "hostname",
+          "tags": [],
+          "docs": "Hostname/FQDN",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "ipv4Addresses",
+          "tags": [],
+          "docs": "IPv4 addresses",
+          "complexTypes": [],
+          "type": "string[]"
+        },
+        {
+          "name": "ipv6Addresses",
+          "tags": [],
+          "docs": "IPv6 addresses",
+          "complexTypes": [],
+          "type": "string[]"
+        },
+        {
+          "name": "txtRecord",
+          "tags": [],
+          "docs": "TXT record data",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "Record<string, string>"
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfRegisterRequest",
+      "slug": "zeroconfregisterrequest",
+      "docs": "Request to register/publish a service",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "port",
+          "tags": [],
+          "docs": "Port number the service is running on",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "props",
+          "tags": [],
+          "docs": "Additional properties/metadata for the service",
+          "complexTypes": [
+            "Record"
+          ],
+          "type": "Record<string, string>"
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfUnregisterRequest",
+      "slug": "zeroconfunregisterrequest",
+      "docs": "Request to unregister a published service",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "name",
+          "tags": [],
+          "docs": "Name of the service to unregister",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfWatchRequest",
+      "slug": "zeroconfwatchrequest",
+      "docs": "Request to watch for services of a specific type",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "type",
+          "tags": [],
+          "docs": "Service type (e.g., '_http._tcp.', '_ssh._tcp.')",
+          "complexTypes": [],
+          "type": "string"
+        },
+        {
+          "name": "domain",
+          "tags": [],
+          "docs": "Domain to search in (typically 'local.')",
+          "complexTypes": [],
+          "type": "string"
+        }
+      ]
+    }
+  ],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "ZeroConfWatchAction",
+      "slug": "zeroconfwatchaction",
+      "docs": "Actions that can occur during service discovery",
+      "types": [
+        {
+          "text": "'added'",
+          "complexTypes": []
+        },
+        {
+          "text": "'removed'",
+          "complexTypes": []
+        },
+        {
+          "text": "'resolved'",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "Record",
+      "slug": "record",
+      "docs": "Construct a type with a set of properties K of type T",
+      "types": [
+        {
+          "text": "{\r\n    [P in K]: T;\r\n}",
+          "complexTypes": [
+            "K",
+            "T"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfWatchCallback",
+      "slug": "zeroconfwatchcallback",
+      "docs": "Callback function for service discovery events",
+      "types": [
+        {
+          "text": "(event: ZeroConfWatchResult): void",
+          "complexTypes": [
+            "ZeroConfWatchResult"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CallbackID",
+      "slug": "callbackid",
+      "docs": "Unique identifier for a watch operation",
+      "types": [
+        {
+          "text": "string",
+          "complexTypes": []
+        }
+      ]
+    },
+    {
+      "name": "ZeroConfUnwatchRequest",
+      "slug": "zeroconfunwatchrequest",
+      "docs": "Request to stop watching for services\nSame as ZeroConfWatchRequest",
+      "types": [
+        {
+          "text": "ZeroConfWatchRequest",
+          "complexTypes": [
+            "ZeroConfWatchRequest"
+          ]
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}
