@@ -1,0 +1,17 @@
+# Ignore artifacts:
+node_modules/
+dist/
+android/build/
+android/.gradle/
+android/.idea/
+android/app/build/
+android/capacitor.settings.gradle
+ios/Pods/
+ios/Plugin.xcodeproj/
+ios/Plugin.xcworkspace/
+ios/DerivedData/
+electron/build/
+electron/dist/
+.DS_Store
+coverage/
+.swiftlint.yml
