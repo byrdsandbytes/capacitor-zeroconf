@@ -322,9 +322,7 @@ Actions that can occur during service discovery
 
 Construct a type with a set of properties K of type T
 
-<code>{
- [P in K]: T;
- }</code>
+<code>{ [P in K]: T; }</code>
 
 
 #### ZeroConfWatchCallback
@@ -370,3 +368,4 @@ This project is licensed under the MIT License - the same license as the origina
 ## Credits
 
 Originally ported from the [Cordova ZeroConf Plugin](https://github.com/becvert/cordova-plugin-zeroconf) and based on [capacitor-zeroconf](https://github.com/trik/capacitor-zeroconf) by Marco Marche.
+

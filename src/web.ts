@@ -14,18 +14,18 @@ import type {
 
 /**
  * Web implementation of ZeroConfPlugin.
- * 
+ *
  * Note: ZeroConf/mDNS service discovery requires native platform capabilities
  * and is not available in web browsers. All methods will reject with an error.
  */
 export class ZeroConfWeb extends WebPlugin implements ZeroConfPlugin {
   private readonly notAvailableError = new Error(
-    'ZeroConf plugin is not available on web platform. Use iOS, Android, or Electron instead.'
+    'ZeroConf plugin is not available on web platform. Use iOS, Android, or Electron instead.',
   );
 
   async addListener(
     _eventName: 'discover',
-    _listenerFunc: (result: ZeroConfWatchResult) => void
+    _listenerFunc: (result: ZeroConfWatchResult) => void,
   ): Promise<PluginListenerHandle> {
     throw this.notAvailableError;
   }
@@ -46,10 +46,7 @@ export class ZeroConfWeb extends WebPlugin implements ZeroConfPlugin {
     throw this.notAvailableError;
   }
 
-  async watch(
-    _request: ZeroConfWatchRequest,
-    _callback?: ZeroConfWatchCallback
-  ): Promise<CallbackID> {
+  async watch(_request: ZeroConfWatchRequest, _callback?: ZeroConfWatchCallback): Promise<CallbackID> {
     throw this.notAvailableError;
   }
 
