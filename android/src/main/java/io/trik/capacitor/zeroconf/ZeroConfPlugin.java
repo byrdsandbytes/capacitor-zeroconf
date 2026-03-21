@@ -105,19 +105,14 @@ public class ZeroConfPlugin extends Plugin {
         getBridge()
             .executeOnMainThread(() -> {
                 try {
-                    implementation.watchService(
-                        type,
-                        domain,
-                        addressFamily,
-                        (action, service) -> {
-                            JSObject status = new JSObject();
-                            status.put("action", action);
-                            status.put("service", jsonifyService(service));
+                    implementation.watchService(type, domain, addressFamily, (action, service) -> {
+                        JSObject status = new JSObject();
+                        status.put("action", action);
+                        status.put("service", jsonifyService(service));
 
-                            // Emit discover event instead of resolving the call
-                            notifyListeners("discover", status);
-                        }
-                    );
+                        // Emit discover event instead of resolving the call
+                        notifyListeners("discover", status);
+                    });
                 } catch (IOException | RuntimeException e) {
                     call.reject("Error: " + e.getMessage());
                     return;

@@ -93,7 +93,7 @@ export interface ZeroConfPlugin {
    */
   addListener(
     eventName: 'discover',
-    listenerFunc: (result: ZeroConfWatchResult) => void
+    listenerFunc: (result: ZeroConfWatchResult) => void,
   ): Promise<PluginListenerHandle>;
 
   /**

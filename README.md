@@ -370,3 +370,4 @@ This project is licensed under the MIT License - the same license as the origina
 ## Credits
 
 Originally ported from the [Cordova ZeroConf Plugin](https://github.com/becvert/cordova-plugin-zeroconf) and based on [capacitor-zeroconf](https://github.com/trik/capacitor-zeroconf) by Marco Marche.
+
