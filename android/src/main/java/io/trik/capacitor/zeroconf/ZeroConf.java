@@ -140,8 +140,8 @@ public class ZeroConf {
                 selectedAddresses = ipv4Addresses;
             }
             browserManager = new BrowserManager(selectedAddresses, hostname);
-            browserManager.watch(type, domain, callback);
         }
+        browserManager.watch(type, domain, callback);
     }
 
     public void unwatchService(String type, String domain) {
